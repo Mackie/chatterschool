@@ -21,11 +21,11 @@
     </main>
 </body>
 <script>
-    
+    {{$ip := .}}
     /**
      * Setup server connection and username
      **/     
-    var host = "localhost"
+    var host = {{$ip}}
     var port = 9001
     var sender = "Mustermann"
 
@@ -39,7 +39,6 @@
 
     function send() {
         var msg = document.getElementById("message").value;
-        console.log("Sende" + msg)
         connection.send(`{"text": "${msg}", "sender": "${sender}"}`);
     }
 

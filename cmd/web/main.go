@@ -9,6 +9,7 @@ import (
 
 var (
 	port = flag.String("port", "8080", "webserver port")
+	ip   = flag.String("ip", "localhost", "webserver ip")
 )
 
 func main() {
@@ -33,7 +34,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = ts.Execute(w, nil)
+	err = ts.Execute(w, *ip)
 	if err != nil {
 		log.Panicln(err.Error())
 		http.Error(w, "Internal server Error", 500)
