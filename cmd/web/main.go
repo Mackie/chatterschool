@@ -14,15 +14,6 @@ var (
 func main() {
 	flag.Parse()
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", home)
-
-	fileServer := http.FileServer(http.Dir("./ui/static/"))
-	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
-
-	log.Println("Starting server on " + *port)
-	err := http.ListenAndServe(":"+*port, mux)
-	log.Fatal(err)
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
